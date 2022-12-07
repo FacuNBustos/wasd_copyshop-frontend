@@ -236,15 +236,15 @@ const PrintPage = () => {
             <input type="checkbox" checked={allDescriptions} className="w-[30px] h-[30px]" onChange={(e) => handleChangeAllDescriptions()}/>
             <p>DESCRIPCIONES</p>
           </div>
-          <div className="flex h-full w-full pl-[100px]">
+          <div className="flex h-full w-full pl-[50px]">
             <form className="flex w-full h-full items-center gap-4" onSubmit={(e) => handleSubmitSearch(e)}>
-              <select className="h-[40px] w-[300px] text-center border border-gray-400 bg-white text-2xl" value={status}
+              <select className="h-[40px] w-[15%] text-center border border-gray-400 bg-white text-2xl" value={status}
               onChange={(e) => handleChangeStatus(e)}>
                 <option value="">Estado de Pedido</option>
                 <option value="ACTIVE">PARA IMPRIMIR</option>
                 <option value="PROGRESS">LISTO A ENTREGAR</option>
               </select>
-              <select className="h-[40px] w-[500px] text-center border border-gray-400 bg-white text-2xl" value={locationSearch} 
+              <select className="h-[40px] w-[15%] text-center border border-gray-400 bg-white text-2xl" value={locationSearch} 
               onChange={(e) => handleChangeLocationSearch(e)}>
                 <option value="">Buscar por Locación</option>
                 {
@@ -254,12 +254,12 @@ const PrintPage = () => {
                   : null
                 }
               </select>
-              <input type="text" onChange={(e) => handleChangeInternalCode(e)} value={internalCode} className="h-[40px] w-[300px] text-2xl text-center border border-gray-400" placeholder="Codigo Interno"/>
-              <input type="text" onChange={(e) => handleChangeFullNameSearch(e)} value={fullNameSearch} className="h-[40px] w-[500px] text-2xl text-center border border-gray-400" placeholder="Nombre Completo"/>
-              <input type="text" onChange={(e) => handleChangeCellNumberSearch(e)} value={cellNumberSearch} className="h-[40px] w-[400px] text-2xl text-center border border-gray-400" placeholder="Celular"/>
-              <input type="date" onChange={(e) => handleChangeCreateAt(e)} value={createAt} className="flex text-center w-[300px] h-[40px] text-centet text-2xl p-1 border border-gray-400"/>
+              <input type="text" onChange={(e) => handleChangeInternalCode(e)} value={internalCode} className="h-[40px] w-[10%] text-2xl text-center border border-gray-400" placeholder="Codigo Interno"/>
+              <input type="text" onChange={(e) => handleChangeFullNameSearch(e)} value={fullNameSearch} className="h-[40px] w-[15%] text-2xl text-center border border-gray-400" placeholder="Nombre Completo"/>
+              <input type="text" onChange={(e) => handleChangeCellNumberSearch(e)} value={cellNumberSearch} className="h-[40px] w-[15%] text-2xl text-center border border-gray-400" placeholder="Celular"/>
+              <input type="date" onChange={(e) => handleChangeCreateAt(e)} value={createAt} className="flex text-center w-[10%] h-[40px] text-centet text-2xl p-1 border border-gray-400"/>
               <img src={DeleteIcon} alt="clean_form" className="ml-[10px] w-[40px] hover:cursor-pointer" onClick={(e) => handleCleanSearchForm(e)}/>
-              <button type="submit" className="absolute right-[50px] h-[50px] w-[200px] text-center p-3 rounded-lg shadow-lg bg-[#0049B7]
+              <button type="submit" className="h-[50px] w-[10%] text-center p-3 rounded-lg shadow-lg bg-[#0049B7]
               hover:bg-[#00DDAA] hover:text-black text-xl font-bold text-white">
                 FILTRAR
               </button>

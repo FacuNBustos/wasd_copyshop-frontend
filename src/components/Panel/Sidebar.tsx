@@ -6,6 +6,7 @@ import PanelIcon from "../../assets/icons/blocks_icon.png";
 import ArrowRight from "../../assets/icons/arrow-right_icon.png";
 import ArrowLeft from "../../assets/icons/arrow-left_icon.png";
 import LogoutIcon from "../../assets/icons/logout_icon.png";
+import HistoryIcon from "../../assets/icons/history_icon.png";
 import { useAppSelector } from "../../hooks/store.hooks";
 import { selectRole } from "../../store/user.store";
 
@@ -48,6 +49,12 @@ const Sidebar = () => {
                 <img src={PanelIcon} alt="blocks" className="h-[80px]"/>
             </button>
         </div>
+        <div className="flex justify-center items-center w-[100px] h-[85px] border-y border-gray-800
+        hover:bg-[#00DDFF]">
+            <button onClick={e => navigate("users")}>
+                <img src={HistoryIcon} alt="blocks" className="h-[70px]"/>
+            </button>
+        </div>
         {
             (administrator)?
             <div className="flex justify-center items-center w-[100px] h-[85px] border-y border-gray-800
@@ -62,7 +69,7 @@ const Sidebar = () => {
             (administrator)?
             <div className="flex justify-center items-center w-[100px] h-[85px] border-y border-gray-800
             hover:bg-[#00DDFF]">
-                <button onClick={e => navigate("locations")}>
+                <button onClick={e => navigate("users")}>
                     <img src={LocationIcon} alt="blocks" className="h-[70px]"/>
                 </button>
             </div>
@@ -91,6 +98,13 @@ const Sidebar = () => {
                 <img src={PanelIcon} alt="blocks" className="h-[70px]"/>
             </button>
         </div>
+        <div className="flex justify-end items-center w-[350px] h-[85px] border-y border-gray-800 pr-4
+        hover:bg-[#00DDFF]">
+            <button onClick={e => navigate("users")} className="flex flex-row justify-center items-center gap-3">
+                <p className="text-4xl">HISTORIAL</p>
+                <img src={HistoryIcon} alt="blocks" className="h-[65px]"/>
+            </button>
+        </div>
         {
             (administrator)?
             <div className="flex justify-end items-center w-[350px] h-[85px] border-y border-gray-800 pr-4
@@ -106,7 +120,7 @@ const Sidebar = () => {
             (administrator)?
             <div className="flex justify-end items-center w-[350px] h-[85px] border-y border-gray-800 pr-4
             hover:bg-[#00DDFF]">
-                <button onClick={e => navigate("locations")} className="flex flex-row justify-center items-center gap-3">
+                <button onClick={e => navigate("users")} className="flex flex-row justify-center items-center gap-3">
                     <p className="text-4xl">LOCACIONES</p>
                     <img src={LocationIcon} alt="blocks" className="h-[65px]"/>
                 </button>

@@ -1,14 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import expandIcon from "../../assets/icons/expand_icon.png";
 import printService from "../../services/print.service";
+import CardDelete from "./CardDelete";
 
 const CardPrint = ({ print, allDescriptions, handleChangePrints }:any) => {
     const navigate = useNavigate();
     const [ viewCard, setViewCard ] = useState(false);
+    const [ viewEditCard, setViewEditCard ] = useState(false);
 
     const handleChangeViewCard = () => {
+        if (viewEditCard) {
+            setViewEditCard(!viewEditCard)
+        };
         setViewCard(!viewCard)
+    };
+    const handleChangeViewEditCard = () => {
+        if (viewCard) {
+            setViewCard(!viewCard)
+        };
+        setViewEditCard(!viewEditCard)
     };
     const handleSelectStatusMessage = () => {
         switch(print.status) {
@@ -139,49 +149,49 @@ const CardPrint = ({ print, allDescriptions, handleChangePrints }:any) => {
             ${(print.status == "ACTIVE")? "bg-[#FFF685]/50 hover:bg-[#FFF685]" : "bg-green-300/50 hover:bg-green-300"}`}
             onClick={(e) => handleChangeViewCard()}>
                 <div className="flex flex-col items-center w-[13%] h-full ">
-                    <div className="pt-1"><p className="text-2xl text-gray-800 font-bold">CODIGO</p></div>
+                    <div className="pt-1"><p className="text-2xl text-gray-800 font-bold select-none">CODIGO</p></div>
                     <div className="flex justify-center items-center p-3 bg-[#EEEEEE] border border-black">
                         <p className="text-5xl">{print.internalCode}</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-[20%] h-full p-1 ">
-                    <div><p className="text-xl text-gray-800 font-bold">FECHA ALTA</p></div>
+                    <div><p className="text-xl text-gray-800 font-bold select-none">FECHA ALTA</p></div>
                     <div className="flex jutify-center items-center w-full h-full">
                         <p className="text-3xl">{ handleSelectDate(print.createAt) }</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-[20%] h-full p-1 ">
-                    <div><p className="text-xl text-gray-800 font-bold">NOMBRE COMPLETO</p></div>
+                    <div><p className="text-xl text-gray-800 font-bold select-none">NOMBRE COMPLETO</p></div>
                     <div className="flex jutify-center items-center w-full h-full">
                         <p className="text-3xl">{print.fullName}</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-[13%] h-full p-1 ">
-                    <div><p className="text-xl text-gray-800 font-bold">CELULAR</p></div>
+                    <div><p className="text-xl text-gray-800 font-bold select-none">CELULAR</p></div>
                     <div className="flex jutify-center items-center w-full h-full">
                         <p className="text-3xl">{(print.cellNumber)? print.cellNumber : "-" }</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-[20%] h-full p-1 ">
-                    <div><p className="text-xl text-gray-800 font-bold">LUGAR</p></div>
+                    <div><p className="text-xl text-gray-800 font-bold select-none">LUGAR</p></div>
                     <div className="flex jutify-center items-center w-full h-full">
                         <p className="text-2xl">{print.location.name}</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-[8%] h-full p-1 ">
-                    <div><p className="text-xl tex t-gray-800 font-bold">MONTO TOTAL</p></div>
+                    <div><p className="text-xl tex t-gray-800 font-bold select-none">MONTO TOTAL</p></div>
                     <div className="flex jutify-center items-center w-full h-full">
                         <p className="text-3xl">{(print.totalMoney)? `$ ${print.totalMoney}` : "-" }</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-[8%] h-full p-1 ">
-                    <div><p className="text-xl text-gray-800 font-bold">SEÑA</p></div>
+                    <div><p className="text-xl text-gray-800 font-bold select-none">SEÑA</p></div>
                     <div className="flex jutify-center items-center w-full h-full">
                         <p className="text-3xl">{(print.advanceMoney)? `$ ${print.advanceMoney}` : "-" }</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-[8%] h-full p-1 ">
-                    <div><p className="text-xl text-gray-800 font-bold">SALDO</p></div>
+                    <div><p className="text-xl text-gray-800 font-bold select-none">SALDO</p></div>
                     <div className="flex jutify-center items-center w-full h-full">
                         <p className="text-3xl">{(print.totalMoney && print.advanceMoney)? `$ ${print.totalMoney - print.advanceMoney}` : "-" }</p>
                     </div>
@@ -194,7 +204,8 @@ const CardPrint = ({ print, allDescriptions, handleChangePrints }:any) => {
                         { handleSelectStatusMessage() }
                     </button>
                     <button className="bg-violet-700 py-3 px-5 text-xl text-white font-bold rounded-full shadow shadow-gray-600
-                    hover:bg-violet-500 active:bg-violet-600">
+                    hover:bg-violet-500 active:bg-violet-600"
+                    onClick={(e) => handleChangeViewEditCard()}>
                         EDITAR
                     </button>
                     <button onClick={(e) => handleDelete()} className="bg-[#FF1D58] py-3 px-5 text-xl text-white font-bold rounded-full shadow shadow-gray-600
@@ -209,7 +220,7 @@ const CardPrint = ({ print, allDescriptions, handleChangePrints }:any) => {
                 <div className="flex flex-col w-full min-h-[150px] bg-[#ECECEC] border-x border-b border-gray-300 rounded">
                     <div className="flex w-full h-[100px]">
                     <div className="flex justify-center items-center h-full w-[10%]">
-                        <p className="text-3xl font-bold">DESCRIPCION:</p>
+                        <p className="text-3xl font-bold select-none">DESCRIPCION:</p>
                     </div>
                     <div className="flex p-2 h-full w-full">
                         <p className="text-3xl">
@@ -218,10 +229,17 @@ const CardPrint = ({ print, allDescriptions, handleChangePrints }:any) => {
                     </div>
                     </div>
                     <div className="flex justify-center items-center w-full h-[50px] border-t border-gray-300">
-                        <p className="flex text-2xl w-[10%] justify-center items-center font-bold">REMITENTE:</p>
+                        <p className="flex text-2xl w-[10%] justify-center items-center font-bold select-none">REMITENTE:</p>
                         <p className="flex text-2xl w-full h-full items-center pl-[20px]">{print.user.email}</p>
 
                     </div>
+                </div>
+            : null
+        }
+        {
+            (viewEditCard)?
+                <div className="flex flex-col w-full min-h-[150px] bg-[#ECECEC] border-x border-b border-gray-300 rounded">
+
                 </div>
             : null
         }

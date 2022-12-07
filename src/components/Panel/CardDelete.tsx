@@ -2,7 +2,11 @@
 
 const CardDelete = () => {
   return (
-    <div>CardDelete</div>
+    <div className="flex justify-center items-center w-full h-full absolute">
+      <div className="w-[50%] h-[50%] bg-[#EFEFEF]">
+
+      </div>
+    </div>
   )
 }
 
