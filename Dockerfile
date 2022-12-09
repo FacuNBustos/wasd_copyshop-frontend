@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-WORKDIR /wasd_copyshop
+WORKDIR /reactapp
 
 EXPOSE 3000
 
